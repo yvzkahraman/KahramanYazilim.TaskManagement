@@ -6,5 +6,6 @@ using System.Threading.Tasks;
 
 namespace KahramanYazilim.TaskManagement.Application.Dtos
 {
-   public record LoginResponseDto(string Name, string Surname, int roleId);
+    public record Result<T>(T data, bool IsSuccess, string ErrorMessage);
+    public record NoData();
 }

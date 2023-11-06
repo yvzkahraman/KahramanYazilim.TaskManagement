@@ -10,6 +10,5 @@ namespace KahramanYazilim.TaskManagement.Application.Interfaces
 {
     public interface IUserRepository
     {
-        Task<AppUser?> GetByFilter(Expression<Func<AppUser, bool>> filter);
     }
 }

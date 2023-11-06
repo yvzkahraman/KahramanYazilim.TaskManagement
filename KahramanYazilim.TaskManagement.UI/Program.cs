@@ -6,7 +6,6 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddPersistanceServices(builder.Configuration);
 
-
 var app = builder.Build();
 
 // kahramanyazilim.com/Home/Index  kahramanyazilim.com

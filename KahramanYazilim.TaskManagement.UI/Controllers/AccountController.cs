@@ -1,10 +1,19 @@
 ﻿using KahramanYazilim.TaskManagement.Application.Dtos;
+using KahramanYazilim.TaskManagement.Application.Requests;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KahramanYazilim.TaskManagement.UI.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly IMediator mediator;
+
+        public AccountController(IMediator mediator)
+        {
+            this.mediator = mediator;
+        }
+
         [HttpGet]
         public IActionResult Login()
         {
@@ -13,8 +22,10 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers
 
         //c# 9.0 record 
         [HttpPost]
-        public IActionResult Login(LoginDto dto)
+        public async Task<IActionResult> Login(LoginRequest dto)
         {
+            //await this.mediator.Send(dto);
+            await this.mediator.Send(new Login2Request("",""));
             return View();
         }
 

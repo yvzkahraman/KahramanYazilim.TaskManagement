@@ -1,4 +1,6 @@
-﻿using KahramanYazilim.TaskManagement.Persistance.Context;
+﻿using KahramanYazilim.TaskManagement.Application.Interfaces;
+using KahramanYazilim.TaskManagement.Persistance.Context;
+using KahramanYazilim.TaskManagement.Persistance.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +20,8 @@ namespace KahramanYazilim.TaskManagement.Persistance
             {
                 opt.UseSqlServer(configuration.GetConnectionString("Local"));
             });
+
+            services.AddScoped<IUserRepository, UserRepository>();
         }
     }
 }
