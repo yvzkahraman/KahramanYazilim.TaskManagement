@@ -1,0 +1,41 @@
+﻿@{
+    Layout = null;
+}
+<html>
+<head>
+
+    <link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="card p-5 mt-5 w-75 mx-auto shadow">
+            <div class="text-center">
+                <h5>Personel Yönetim Sistemi</h5>
+                <p class="lead">
+                    <i> Giriş Ekranı</i>
+                </p>
+            </div>
+
+            <form action="/Account/Login" class="form-floating mt-3" method="post">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="username" name="Username" placeholder="">
+                    <label for="username">Kullanıcı Adı</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="password" name="Password" placeholder="">
+                    <label for="password">Parola</label>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button class="btn btn-lg btn-primary" type="submit">Giriş Yap</button>
+                    <a class="btn btn-lg btn-info" href="#">Kayıt Ol</a>
+                </div>
+            </form>
+        </div>
+
+      
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KahramanYazilim.TaskManagement.Domain", "KahramanYazilim.TaskManagement.Domain\KahramanYazilim.TaskManagement.Domain.csproj", "{DB423F2E-9BA0-47B7-A416-367C8A810A3B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KahramanYazilim.TaskManagement.Persistance", "KahramanYazilim.TaskManagement.Persistance\KahramanYazilim.TaskManagement.Persistance.csproj", "{D887AFF0-A518-43F0-8CE4-3FDD8B583BE3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KahramanYazilim.TaskManagement.Application", "KahramanYazilim.TaskManagement.Application\KahramanYazilim.TaskManagement.Application.csproj", "{FFAF6BFF-21FD-4EDE-BCC5-B65D184C16DC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KahramanYazilim.TaskManagement.UI", "KahramanYazilim.TaskManagement.UI\KahramanYazilim.TaskManagement.UI.csproj", "{D3CB53FD-0772-4036-8E4E-9010620ACA78}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KahramanYazilim.TaskManagement.Tutorial", "KahramanYazilim.TaskManagement.Tutorial\KahramanYazilim.TaskManagement.Tutorial.csproj", "{B753BEEB-633A-4524-A7C8-DDCC72A64094}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB423F2E-9BA0-47B7-A416-367C8A810A3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB423F2E-9BA0-47B7-A416-367C8A810A3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB423F2E-9BA0-47B7-A416-367C8A810A3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB423F2E-9BA0-47B7-A416-367C8A810A3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D887AFF0-A518-43F0-8CE4-3FDD8B583BE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D887AFF0-A518-43F0-8CE4-3FDD8B583BE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D887AFF0-A518-43F0-8CE4-3FDD8B583BE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D887AFF0-A518-43F0-8CE4-3FDD8B583BE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFAF6BFF-21FD-4EDE-BCC5-B65D184C16DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFAF6BFF-21FD-4EDE-BCC5-B65D184C16DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFAF6BFF-21FD-4EDE-BCC5-B65D184C16DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFAF6BFF-21FD-4EDE-BCC5-B65D184C16DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3CB53FD-0772-4036-8E4E-9010620ACA78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3CB53FD-0772-4036-8E4E-9010620ACA78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3CB53FD-0772-4036-8E4E-9010620ACA78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3CB53FD-0772-4036-8E4E-9010620ACA78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B753BEEB-633A-4524-A7C8-DDCC72A64094}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B753BEEB-633A-4524-A7C8-DDCC72A64094}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B753BEEB-633A-4524-A7C8-DDCC72A64094}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B753BEEB-633A-4524-A7C8-DDCC72A64094}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5ADE0B6C-3730-4885-A968-56BF4D221A26}
+	EndGlobalSection
+EndGlobal
