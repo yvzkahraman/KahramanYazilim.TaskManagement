@@ -24,8 +24,8 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginRequest dto)
         {
-            //await this.mediator.Send(dto);
-            await this.mediator.Send(new Login2Request("",""));
+            await this.mediator.Send(dto);
+
             return View();
         }
 
