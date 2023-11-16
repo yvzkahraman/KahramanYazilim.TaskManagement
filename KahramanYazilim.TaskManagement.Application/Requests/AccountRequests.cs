@@ -9,5 +9,5 @@ using System.Threading.Tasks;
 namespace KahramanYazilim.TaskManagement.Application.Requests
 {
 
-    public record LoginRequest(string Username, string Password) : IRequest<Result<LoginResponseDto?>>;
+    public record LoginRequest(string? Username, string? Password, bool RememberMe = false) : IRequest<Result<LoginResponseDto?>>;
 }

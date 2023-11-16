@@ -1,4 +1,6 @@
 ﻿using KahramanYazilim.TaskManagement.Application.Dtos;
+using KahramanYazilim.TaskManagement.Application.Enums;
+using KahramanYazilim.TaskManagement.Application.Extensions;
 using KahramanYazilim.TaskManagement.Application.Interfaces;
 using KahramanYazilim.TaskManagement.Application.Requests;
 using KahramanYazilim.TaskManagement.Application.Validators;
@@ -22,31 +24,30 @@ namespace KahramanYazilim.TaskManagement.Application.Handlers
 
         public async Task<Result<LoginResponseDto?>> Handle(LoginRequest request, CancellationToken cancellationToken)
         {
-            // validation kontrol,
-            // 
-
             var validator = new LoginRequestValidator();
             var validationResult = await validator.ValidateAsync(request);
             if (validationResult.IsValid)
             {
-                //
-                return new Result<LoginResponseDto?>(new LoginResponseDto("", "", 1), true, null, null);
+
+                var user = await this.userRepository.GetByFilter(x => x.Password == request.Password && x.Username == request.Username);
+
+            
+                if (user != null)
+                {
+                    var type = (RoleType)user.AppRoleId;
+                    return new Result<LoginResponseDto?>(new LoginResponseDto(user.Name, user.Surname,
+                        type), true, null, null);
+                }
+                else
+                {
+                    return new Result<LoginResponseDto?>(null, false, "Kullanıcı adı veya şifre hatalı", null);
+                }
+
             }
             else
             {
-                var errorList = new List<ValidationError>();
-                var errors = validationResult.Errors.ToList();
-
-                foreach (var error in errors)
-                {
-
-                    errorList.Add(new ValidationError
-                    (
-                        error.PropertyName,
-                        error.ErrorMessage
-                    ));
-                }
-                return new Result<LoginResponseDto?>(null, false, "bir hata oluştu", errorList);
+                var errorList = validationResult.Errors.ToMap();
+                return new Result<LoginResponseDto?>(null, false, null, errorList);
 
             }
 
