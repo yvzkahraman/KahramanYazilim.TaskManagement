@@ -1,5 +1,4 @@
-﻿@model KahramanYazilim.TaskManagement.Application.Requests.LoginRequest
-@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@model LoginRequest
 @{
     Layout = null;
 }
@@ -18,7 +17,7 @@
                 </p>
             </div>
 
-            <form action="/Account/Login" class="form-floating mt-3" method="post">
+            <form asp-action="Login" asp-controller="Account" asp-area="" class="form-floating mt-3" method="post">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" asp-for="Username"  placeholder="">
                     <label for="username">Kullanıcı Adı</label>
@@ -38,7 +37,7 @@
 
                 <div class="d-grid gap-2">
                     <button class="btn btn-lg btn-primary" type="submit">Giriş Yap</button>
-                    <a class="btn btn-lg btn-info" href="#">Kayıt Ol</a>
+                    <a asp-action="Register" asp-controller="Account" class="btn btn-lg btn-info" >Kayıt Ol</a>
                 </div>
 
                 <div asp-validation-summary="All" class="text-danger lead">

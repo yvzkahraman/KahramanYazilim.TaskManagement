@@ -1,4 +1,5 @@
-﻿@{
+﻿@model KahramanYazilim.TaskManagement.Application.Requests.RegisterRequest
+@{
     Layout = null;
 }
 <html>
@@ -16,36 +17,39 @@
                 </p>
             </div>
 
-            <form class="form-floating mt-3">
+            <form asp-action="Register" asp-controller="Account" asp-area="" class="form-floating mt-3">
 
 
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="name" placeholder="">
+                    <input type="text" class="form-control" asp-for="Name" placeholder="">
                     <label for="name">Ad</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="surname" placeholder="">
+                    <input type="text" class="form-control"  asp-for="Surname" placeholder="">
                     <label for="name">Soyad</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="username" placeholder="">
+                    <input type="text" class="form-control" asp-for="Username" placeholder="">
                     <label for="username">Kulanıcı adı</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="password" placeholder="">
+                    <input type="password" class="form-control" asp-for="Password" placeholder="">
                     <label for="password">Parola</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="password" placeholder="">
-                    <label for="password">Parola Tekrar</label>
+                    <input type="password" class="form-control" asp-for="ConfirmPassword" placeholder="">
+                    <label for="confirmpassword">Parola Tekrar</label>
                 </div>
 
                 <div class="d-grid gap-2">
                     <button class="btn btn-lg btn-primary" type="submit">Kayıt Ol</button>
-                    <a class="btn btn-lg btn-info" href="#">Giriş Yap</a>
+                    <a class="btn btn-lg btn-info" asp-action="Login" asp-controller="Account" asp-area="">Giriş Yap</a>
+                </div>
+
+                <div asp-validation-summary="All" class="text-danger lead">
                 </div>
             </form>
         </div>

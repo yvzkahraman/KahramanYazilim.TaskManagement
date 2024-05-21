@@ -5,11 +5,10 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers.Admin
 {
     [Area("Admin")]
     [Authorize(Roles = "Admin")]
-    public class HomeController : Controller
+    public class PriorityController : Controller
     {
-        public IActionResult Index()
+        public IActionResult List()
         {
-          
             return View();
         }
     }

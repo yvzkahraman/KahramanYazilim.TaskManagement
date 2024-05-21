@@ -23,7 +23,6 @@
     <Folder Include="Areas\Member\" />
     <Folder Include="Controllers\Member\" />
     <Folder Include="Controllers\Member\" />
-    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>
