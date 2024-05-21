@@ -10,7 +10,6 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers
 {
     public class AccountController : Controller
     {
-        //test
         private readonly IMediator mediator;
 
         public AccountController(IMediator mediator)
