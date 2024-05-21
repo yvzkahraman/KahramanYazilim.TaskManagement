@@ -15,7 +15,15 @@ namespace KahramanYazilim.TaskManagement.Persistance.Repositories
             this.context = context;
         }
 
-        public async Task<AppUser?> GetByFilter(Expression<Func<AppUser, bool>> filter, bool asNoTracking = true)
+        public async Task<int> CreateUserAsync(AppUser appUser)
+        {
+            this.context.Users.Add(appUser);
+            return await this.context.SaveChangesAsync();
+         
+        }
+
+
+        public async Task<AppUser?> GetByFilterAsync(Expression<Func<AppUser, bool>> filter, bool asNoTracking = true)
         {
 
             if (asNoTracking)

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using KahramanYazilim.TaskManagement.Application.Dtos;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace KahramanYazilim.TaskManagement.UI.Controllers
 {
@@ -53,9 +54,37 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers
             }
         }
 
+
+        [HttpGet]
         public IActionResult Register()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterRequest request)
+        {
+            var result = await this.mediator.Send(request);
+            if (result.IsSuccess)
+            {
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                if (result.Errors != null && result.Errors.Count > 0)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", result.ErrorMessage ?? "Bilinmeyen bir hata oluştu, sistem üreticinize  başvurun");
+                }
+                return View(request);
+            }
+
         }
 
         public IActionResult LogOut()

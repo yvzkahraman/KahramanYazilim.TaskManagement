@@ -5,11 +5,7 @@ using KahramanYazilim.TaskManagement.Application.Interfaces;
 using KahramanYazilim.TaskManagement.Application.Requests;
 using KahramanYazilim.TaskManagement.Application.Validators;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace KahramanYazilim.TaskManagement.Application.Handlers
 {
@@ -29,7 +25,7 @@ namespace KahramanYazilim.TaskManagement.Application.Handlers
             if (validationResult.IsValid)
             {
 
-                var user = await this.userRepository.GetByFilter(x => x.Password == request.Password && x.Username == request.Username);
+                var user = await this.userRepository.GetByFilterAsync(x => x.Password == request.Password && x.Username == request.Username);
 
             
                 if (user != null)
