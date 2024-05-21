@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KahramanYazilim.TaskManagement.Domain.Entities
+﻿namespace KahramanYazilim.TaskManagement.Domain.Entities
 {
     public class AppUser : BaseEntity
     {

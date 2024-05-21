@@ -1,11 +1,6 @@
 ﻿using KahramanYazilim.TaskManagement.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KahramanYazilim.TaskManagement.Persistance.Configurations
 {
@@ -17,7 +12,7 @@ namespace KahramanYazilim.TaskManagement.Persistance.Configurations
             builder.Property(x => x.Definition).HasMaxLength(250);
 
 
-            builder.HasMany(x=>x.Tasks).WithOne(x=>x.Priority).HasForeignKey(x=>x.PriorityId);
+            builder.HasMany(x => x.Tasks).WithOne(x => x.Priority).HasForeignKey(x => x.PriorityId);
         }
     }
 }

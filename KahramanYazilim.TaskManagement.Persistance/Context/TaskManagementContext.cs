@@ -6,9 +6,9 @@ namespace KahramanYazilim.TaskManagement.Persistance.Context
 {
     public class TaskManagementContext : DbContext
     {
-        public TaskManagementContext(DbContextOptions<TaskManagementContext> options) :base(options)
+        public TaskManagementContext(DbContextOptions<TaskManagementContext> options) : base(options)
         {
-            
+
         }
 
         public DbSet<AppRole> Roles { get; set; }
@@ -33,7 +33,7 @@ namespace KahramanYazilim.TaskManagement.Persistance.Context
             base.OnModelCreating(modelBuilder);
         }
 
-    
+
     }
 }
 

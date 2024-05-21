@@ -19,7 +19,7 @@ namespace KahramanYazilim.TaskManagement.Persistance.Repositories
         {
             this.context.Users.Add(appUser);
             return await this.context.SaveChangesAsync();
-         
+
         }
 
 

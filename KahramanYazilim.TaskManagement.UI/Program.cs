@@ -1,5 +1,5 @@
-using KahramanYazilim.TaskManagement.Persistance;
 using KahramanYazilim.TaskManagement.Application.Extensions;
+using KahramanYazilim.TaskManagement.Persistance;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);

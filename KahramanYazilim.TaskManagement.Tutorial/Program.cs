@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-class Program
+﻿class Program
 {
     public static void Main(string[] args)
     {
@@ -8,8 +6,8 @@ class Program
 
         people.Add(new Person()
         {
-            Id =1,
-            Name="Oğuze"
+            Id = 1,
+            Name = "Oğuze"
         });
 
         people.Add(new Person()
@@ -20,11 +18,11 @@ class Program
 
         people.Add(new Person()
         {
-            Id=3,
-            Name= "Ebrar İnci"
+            Id = 3,
+            Name = "Ebrar İnci"
         });
 
-     
+
         var someting = (Person x) =>
         {
             return x.Name;

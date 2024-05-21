@@ -27,7 +27,7 @@ namespace KahramanYazilim.TaskManagement.Application.Handlers
 
                 var user = await this.userRepository.GetByFilterAsync(x => x.Password == request.Password && x.Username == request.Username);
 
-            
+
                 if (user != null)
                 {
                     var type = (RoleType)user.AppRoleId;

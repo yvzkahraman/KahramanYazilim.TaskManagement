@@ -1,12 +1,10 @@
-﻿using KahramanYazilim.TaskManagement.Application.Requests;
+﻿using KahramanYazilim.TaskManagement.Application.Dtos;
+using KahramanYazilim.TaskManagement.Application.Requests;
 using MediatR;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
-using System.Runtime.CompilerServices;
 using System.Security.Claims;
-using KahramanYazilim.TaskManagement.Application.Dtos;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace KahramanYazilim.TaskManagement.UI.Controllers
 {

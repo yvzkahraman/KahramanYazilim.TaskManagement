@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace KahramanYazilim.TaskManagement.UI.Controllers.Admin
 {
     [Area("Admin")]
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
         public IActionResult Index()
