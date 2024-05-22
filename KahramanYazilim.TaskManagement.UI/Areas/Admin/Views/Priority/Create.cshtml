@@ -1,0 +1,22 @@
+﻿@model PriorityCreateRequest
+@{
+    Layout = "_AdminLayout";
+    ViewBag.Title = "Aciliyet Durum Ekle";
+}
+
+
+<form asp-action="Create" asp-controller="Priority" asp-area="Admin" method="post"> 
+    <div class="mb-3">
+        <label class="form-label">Aciliyet Tanımı :</label>
+        <input asp-for="Definition" class="form-control"/>
+    </div>
+
+
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </div>
+
+    <div asp-validation-summary="All">
+
+    </div>
+</form>

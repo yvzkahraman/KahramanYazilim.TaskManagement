@@ -9,7 +9,7 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers.Admin
     {
         public IActionResult Index()
         {
-          
+
             return View();
         }
     }
