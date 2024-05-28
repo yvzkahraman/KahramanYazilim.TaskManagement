@@ -18,5 +18,15 @@ namespace KahramanYazilim.TaskManagement.Application.Extensions
 
             };
         }
+
+        public static Priority ToMap(this PriorityCreateRequest request)
+        {
+
+            return new Priority
+            {
+                Definition = request.Definition,
+            };
+        }
     }
+
 }
