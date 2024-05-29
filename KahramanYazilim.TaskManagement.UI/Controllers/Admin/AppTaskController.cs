@@ -16,10 +16,12 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers.Admin
             this.mediator = mediator;
         }
 
-        public async Task<IActionResult> List(int activePage=1)
+        public async Task<IActionResult> List(string? s,int activePage=1)
         {
-            var result = await this.mediator.Send(new AppTaskListRequest(activePage));
-            return View(result.Data);
+            ViewBag.s = s;
+            ViewBag.Active = "AppTask";
+            var result = await this.mediator.Send(new AppTaskListRequest(activePage,s));
+            return View(result);
         }
     }
 }

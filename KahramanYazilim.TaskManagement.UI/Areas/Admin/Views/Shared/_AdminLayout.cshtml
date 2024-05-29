@@ -33,11 +33,11 @@
     <div class="d-flex" id="wrapper">
         <!-- Sidebar-->
         <div class="border-end bg-white" id="sidebar-wrapper">
-            <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
+            <div class="sidebar-heading border-bottom bg-light">Work Order App</div>
             <div class="list-group list-group-flush">
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Gösterge Paneli</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-action="List" asp-controller="Priority">Aciliyet Durumları</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3 @(ViewBag.Active=="Priority"?"active":"")" asp-action="List" asp-controller="Priority">Aciliyet Durumları</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3 @(ViewBag.Active=="AppTask"?"active":"")" asp-action="List" asp-controller="AppTask" asp-area="Admin">İş Emirleri</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
@@ -48,7 +48,7 @@
             <!-- Top navigation-->
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <div class="container-fluid">
-                    <button class="btn btn-primary" id="sidebarToggle">Menü</button>
+                    <button class="btn btn-secondary" id="sidebarToggle">Menü</button>
                 
                 </div>
             </nav>

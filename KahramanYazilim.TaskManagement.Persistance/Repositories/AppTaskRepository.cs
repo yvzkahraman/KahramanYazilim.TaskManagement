@@ -16,9 +16,15 @@ namespace KahramanYazilim.TaskManagement.Persistance.Repositories
             this.context = context;
         }
 
-        public async Task<PagedData<AppTask>> GetAllAsync(int activePage, int pageSize = 10)
+        public async Task<PagedData<AppTask>> GetAllAsync(int activePage, string? s = null, int pageSize = 10)
         {
-            var list = await this.context.Tasks.Include(x => x.Priority).AsNoTracking().ToPagedAsync(activePage, pageSize);
+            var query = this.context.Tasks.AsQueryable();
+            if (!string.IsNullOrEmpty(s))
+            {
+                query = query.Where(x => x.Title.ToLower().Contains(s.ToLower()));
+            }
+
+            var list = await query.Include(x => x.Priority).AsNoTracking().ToPagedAsync(activePage, pageSize);
             return list;
         }
     }
