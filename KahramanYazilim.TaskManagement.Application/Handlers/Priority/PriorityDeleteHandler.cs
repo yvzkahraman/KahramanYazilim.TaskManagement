@@ -2,11 +2,6 @@
 using KahramanYazilim.TaskManagement.Application.Interfaces;
 using KahramanYazilim.TaskManagement.Application.Requests;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KahramanYazilim.TaskManagement.Application.Handlers
 {
@@ -21,10 +16,10 @@ namespace KahramanYazilim.TaskManagement.Application.Handlers
 
         public async Task<Result<NoData>> Handle(PriorityDeleteRequest request, CancellationToken cancellationToken)
         {
-            var deletedEntity = await this.repository.GetByFilterAsync(x=>x.Id == request.Id);
-            if (deletedEntity!=null)
+            var deletedEntity = await this.repository.GetByFilterAsync(x => x.Id == request.Id);
+            if (deletedEntity != null)
             {
-               await this.repository.DeleteAsync(deletedEntity);
+                await this.repository.DeleteAsync(deletedEntity);
                 return new Result<NoData>(new NoData(), true, null, null);
             }
             return new Result<NoData>(new NoData(), false, "Silinecek aciliyet bulunamadı", null);

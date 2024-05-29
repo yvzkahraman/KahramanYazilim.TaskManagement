@@ -9,7 +9,7 @@ namespace KahramanYazilim.TaskManagement.Application.Interfaces
 
         Task<int> CreateAsync(Priority priority);
 
-        Task<Priority?> GetByFilterAsNoTrackingAsync(Expression<Func<Priority,bool>> filter);
+        Task<Priority?> GetByFilterAsNoTrackingAsync(Expression<Func<Priority, bool>> filter);
         Task<Priority?> GetByFilterAsync(Expression<Func<Priority, bool>> filter);
 
 

@@ -9,7 +9,7 @@ namespace KahramanYazilim.TaskManagement.Persistance.Configurations
         public void Configure(EntityTypeBuilder<AppTask> builder)
         {
             builder.Property(x => x.PriorityId).IsRequired(true);
-            builder.Property(x => x.AppUserId).IsRequired(true);
+            builder.Property(x => x.AppUserId).IsRequired(false);
 
             builder.Property(x => x.Description).IsRequired(true);
 

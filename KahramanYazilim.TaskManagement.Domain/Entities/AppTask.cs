@@ -8,7 +8,7 @@
 
         public string Description { get; set; } = null!;
 
-        public int AppUserId { get; set; }
+        public int? AppUserId { get; set; }
 
         public int PriorityId { get; set; }
 

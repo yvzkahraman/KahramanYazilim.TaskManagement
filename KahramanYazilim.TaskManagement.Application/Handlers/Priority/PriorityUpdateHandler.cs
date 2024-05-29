@@ -4,11 +4,6 @@ using KahramanYazilim.TaskManagement.Application.Interfaces;
 using KahramanYazilim.TaskManagement.Application.Requests;
 using KahramanYazilim.TaskManagement.Application.Validators.Priority;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KahramanYazilim.TaskManagement.Application.Handlers
 {
@@ -24,7 +19,7 @@ namespace KahramanYazilim.TaskManagement.Application.Handlers
         public async Task<Result<NoData>> Handle(PriorityUpdateRequest request, CancellationToken cancellationToken)
         {
 
-            var validator =  new PriorityUpdateRequestValidator();
+            var validator = new PriorityUpdateRequestValidator();
             var validationResult = validator.Validate(request);
 
             if (validationResult.IsValid)
@@ -46,7 +41,7 @@ namespace KahramanYazilim.TaskManagement.Application.Handlers
             }
 
 
-     
+
         }
     }
 }

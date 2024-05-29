@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using KahramanYazilim.TaskManagement.Application.Requests;
+﻿using KahramanYazilim.TaskManagement.Application.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
