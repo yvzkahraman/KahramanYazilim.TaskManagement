@@ -27,6 +27,17 @@ namespace KahramanYazilim.TaskManagement.Application.Extensions
                 Definition = request.Definition,
             };
         }
+
+        public static AppTask ToMap(this AppTaskCreateRequest request)
+        {
+            return new AppTask
+            {
+                Description = request.Description,
+                Title = request.Title,
+                PriorityId = request.PriorityId,
+                State = false
+            };
+        }
     }
 
 }

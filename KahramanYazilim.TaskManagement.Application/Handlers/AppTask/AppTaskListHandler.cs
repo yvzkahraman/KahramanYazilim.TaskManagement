@@ -16,7 +16,7 @@ namespace KahramanYazilim.TaskManagement.Application.Handlers
 
         public async Task<PagedResult<AppTaskListDto>> Handle(AppTaskListRequest request, CancellationToken cancellationToken)
         {
-            var list = await this.repository.GetAllAsync(activePage:request.ActivePage, s:request.S,pageSize:5);
+            var list = await this.repository.GetAllAsync(activePage: request.ActivePage, s: request.S, pageSize: 7);
 
             var result = new List<AppTaskListDto>();
 
@@ -27,7 +27,7 @@ namespace KahramanYazilim.TaskManagement.Application.Handlers
                 result.Add(dto);
             }
 
-            return new PagedResult<AppTaskListDto>(result,request.ActivePage,list.PageSize,list.TotalPages);
+            return new PagedResult<AppTaskListDto>(result, request.ActivePage, list.PageSize, list.TotalPages);
         }
     }
 }

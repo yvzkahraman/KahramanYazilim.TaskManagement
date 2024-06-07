@@ -26,13 +26,29 @@
 
 </div>
 
+@{
+
+    if (!string.IsNullOrEmpty(ViewBag.s))
+    {
+        <div class="row">
+            <div class="alert alert-secondary" role="alert">
+                Şu anda <strong> @ViewBag.s </strong>arama filtresine  göre kayıtları görmektesiniz
+                <a  asp-action="List" asp-controller="AppTask" asp-route-s="" asp-area="Admin" class="float-end">Filtreyi Kaldır</a>
+            </div>
+        </div>
+
+    }
+}
+
+
+
 
 
 <table class="table table-sm mt-2">
     <thead>
         <tr>
 
-            <th scope="col">İş Emri</th>         
+            <th scope="col">İş Emri</th>
             <th scope="col">İşin Aciliyeti</th>
             <th scope="col">İşin Durumu</t>
             <th scope="col"></th>
@@ -47,7 +63,7 @@
             foreach (var item in Model.Data)
             {
                 <tr>
-                    <td>@item.Title</td>                 
+                    <td>@item.Title</td>
                     <td>@item.PriorityDefinition</td>
                     <td>@(item.State ? "Tamamlandı" : "Tamamlanmadı")</td>
                     <td>

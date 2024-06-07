@@ -16,6 +16,12 @@ namespace KahramanYazilim.TaskManagement.Persistance.Repositories
             this.context = context;
         }
 
+        public async Task<int> CreateAsync(AppTask task)
+        {
+            await this.context.Tasks.AddAsync(task);
+            return await this.context.SaveChangesAsync();
+        }
+
         public async Task<PagedData<AppTask>> GetAllAsync(int activePage, string? s = null, int pageSize = 10)
         {
             var query = this.context.Tasks.AsQueryable();
