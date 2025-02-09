@@ -32,5 +32,14 @@ namespace KahramanYazilim.TaskManagement.Persistance.Repositories
             }
             return await this.context.Users.SingleOrDefaultAsync(filter);
         }
+        public async Task<List<AppUser>?> GetAllByFilterAsync(Expression<Func<AppUser, bool>> filter, bool asNoTracking = true)
+        {
+
+            if (asNoTracking)
+            {
+                return await this.context.Users.AsNoTracking().Where(filter).ToListAsync();
+            }
+            return await this.context.Users.Where(filter).ToListAsync();
+        }
     }
 }

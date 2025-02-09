@@ -80,14 +80,27 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers.Admin
         {
             var updated = await this.mediator.Send(new AppTaskGetByIdRequest(id));
 
-            var result = await this.mediator.Send(new PriorityListRequest());
+            // admin olmayan userlar.
 
-            ViewBag.Priorities = new List<SelectListItem>(result.Data.Select(x => new SelectListItem(x.Definition, x.Id.ToString(),updated.Data.PriorityId == x.Id)));
+            var priorityResult = await this.mediator.Send(new PriorityListRequest());
+
+            var memberListResult = await this.mediator.Send(new  MemberListRequest());
+       
+
+            ViewBag.Priorities = new List<SelectListItem>(priorityResult.Data.Select(x => new SelectListItem(x.Definition, x.Id.ToString(),updated.Data.PriorityId == x.Id)));
+
+            var members = new List<SelectListItem>(memberListResult.Data.Select(x => new SelectListItem(x.Name +" "+x.Surname, x.Id.ToString(), updated.Data.AppUserId == x.Id)));
+
+            if(updated.Data.AppUserId == null)
+            {
+                members.Add(new SelectListItem("Personel Seçilmemiş", "0",true));
+            }
 
 
+            ViewBag.Members = members;
 
 
-            return View();
+            return View(new AppTaskUpdateRequest(updated.Data.Title,updated.Data.Description,updated.Data.PriorityId,updated.Data.AppUserId));
         }
 
 

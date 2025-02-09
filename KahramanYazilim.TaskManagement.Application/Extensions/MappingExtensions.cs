@@ -42,7 +42,12 @@ namespace KahramanYazilim.TaskManagement.Application.Extensions
 
         public static AppTaskListDto ToMap(this AppTask appTask)
         {
-            return new AppTaskListDto(appTask.Id, appTask.Title, appTask.Description, appTask.Priority.Definition, appTask.State, appTask.AppUserId, appTask.AppUserId.HasValue ? appTask.AppUser?.Name + " " + appTask.AppUser?.Surname : null, appTask.PriorityId);
+            return new AppTaskListDto(appTask.Id, appTask.Title, appTask.Description, appTask?.Priority?.Definition, appTask?.State ?? false, appTask.AppUserId, appTask.AppUserId.HasValue ? appTask.AppUser?.Name + " " + appTask.AppUser?.Surname : null, appTask.PriorityId);
+        }
+
+        public static List<MemberListDto> ToMap(this List<AppUser> users)
+        {
+            return users.Select(x => new MemberListDto(x.Id, x.Name, x.Surname, x.Username)).ToList();
         }
 
     }

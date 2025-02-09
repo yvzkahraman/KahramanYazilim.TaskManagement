@@ -1,7 +1,7 @@
 ﻿@model AppTaskUpdateRequest
 @{
     Layout = "_AdminLayout";
-    ViewBag.Title = "İş Emri Ekleme Ekranı";
+    ViewBag.Title = "İş Emri Detay Ekranı";
 }
 
 <form asp-action="Update" asp-controller="AppTask" asp-area="Admin" method="post">
@@ -21,6 +21,12 @@
     <div class="mb-3">
         <label>Öncelik :</label>
         <select class="form-control" asp-for="PriorityId" asp-items="@ViewBag.Priorities">
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Personel :</label>
+        <select class="form-control" asp-for="AppUserId" asp-items="@ViewBag.Members">
         </select>
     </div>
 
