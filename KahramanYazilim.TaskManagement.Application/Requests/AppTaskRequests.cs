@@ -19,5 +19,5 @@ namespace KahramanYazilim.TaskManagement.Application.Requests
 
     public record AppTaskDeleteRequest(int Id) : IRequest<Result<NoData>>;
 
-    public record AppTaskUpdateRequest(string? Title, string? Description, int PriorityId, int? AppUserId) : IRequest<Result<AppTaskDto>>;
+    public record AppTaskUpdateRequest(int Id,string? Title, string? Description, int PriorityId, int? AppUserId) : IRequest<Result<AppTaskDto>>;
 }

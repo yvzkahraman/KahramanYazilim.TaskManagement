@@ -39,3 +39,5 @@
     <div asp-validation-summary="All" class="text-danger">
     </div>
 </form>
+
+@await Component.InvokeAsync("TaskReports", new { @appTaskId = @Model.Id })

@@ -1,0 +1,21 @@
+﻿@model List<TaskReportListDto>
+<h5>Kaydedilen Aşamalar</h5>
+<table class="table table-hover">
+
+    <thead>
+        <tr>
+            <th>Tanım</th>
+            <th>Açıklama</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var taskReport in Model)
+        {
+            <tr>
+                <td>@taskReport.Definition</td>
+                <td>@taskReport.Detail</td>
+
+            </tr>
+        }
+    </tbody>
+</table>

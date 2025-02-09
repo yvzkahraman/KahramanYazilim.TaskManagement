@@ -50,6 +50,11 @@ namespace KahramanYazilim.TaskManagement.Application.Extensions
             return users.Select(x => new MemberListDto(x.Id, x.Name, x.Surname, x.Username)).ToList();
         }
 
+        public static List<TaskReportListDto> ToMap(this List<TaskReport> list)
+        {
+            return list.Select(x => new TaskReportListDto(x.Id,x.Definition,x.Detail,x.AppTaskId)).ToList();
+        }
+
     }
 
 }

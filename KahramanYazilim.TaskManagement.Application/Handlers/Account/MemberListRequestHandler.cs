@@ -13,11 +13,11 @@ using System.Threading.Tasks;
 
 namespace KahramanYazilim.TaskManagement.Application.Handlers.Account
 {
-    public class MemberListRequestHandler : IRequestHandler<MemberListRequest, Result<List<MemberListDto>>>
+    public class TaskReportRequestHandler : IRequestHandler<MemberListRequest, Result<List<MemberListDto>>>
     {
         private readonly IUserRepository userRepository;
 
-        public MemberListRequestHandler(IUserRepository userRepository)
+        public TaskReportRequestHandler(IUserRepository userRepository)
         {
             this.userRepository = userRepository;
         }

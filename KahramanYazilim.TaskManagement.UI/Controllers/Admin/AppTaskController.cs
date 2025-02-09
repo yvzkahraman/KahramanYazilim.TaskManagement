@@ -100,7 +100,7 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers.Admin
             ViewBag.Members = members;
 
 
-            return View(new AppTaskUpdateRequest(updated.Data.Title,updated.Data.Description,updated.Data.PriorityId,updated.Data.AppUserId));
+            return View(new AppTaskUpdateRequest(updated.Data.Id, updated.Data.Title,updated.Data.Description,updated.Data.PriorityId,updated.Data.AppUserId));
         }
 
 
