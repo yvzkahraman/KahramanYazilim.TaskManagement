@@ -50,7 +50,8 @@
 
             <th scope="col">İş Emri</th>
             <th scope="col">İşin Aciliyeti</th>
-            <th scope="col">İşin Durumu</t>
+            <th scope="col">İşin Durumu</th>
+            <th scope="col">Personel</th>
             <th scope="col"></th>
 
 
@@ -66,9 +67,10 @@
                     <td>@item.Title</td>
                     <td>@item.PriorityDefinition</td>
                     <td>@(item.State ? "Tamamlandı" : "Tamamlanmadı")</td>
+                    <td>@(item.AppUserId.HasValue ? item.AppUserFullname : "Atanmamış")</td>
                     <td>
                         <a asp-action="Update" asp-controller="AppTask" asp-area="Admin" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Detay</a>
-                        <a asp-action="Delete" onclick="return confirm('silmek istediğiniz emin misin ?')" class="btn btn-sm btn-primary" asp-controller="AppTask " asp-area="Admin" asp-route-id="@item.Id">Sil</a>
+                        <a asp-action="Delete" onclick="return confirm('silmek istediğiniz emin misin ?')" class="btn btn-sm btn-primary" asp-controller="AppTask" asp-area="Admin" asp-route-id="@item.Id">Sil</a>
 
                     </td>
 

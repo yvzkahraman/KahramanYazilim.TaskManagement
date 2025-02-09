@@ -39,14 +39,6 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers.Admin
         [HttpPost]
         public async Task<IActionResult> Create(AppTaskCreateRequest request)
         {
-
-   
-
-
-
-
-
-
             var result = await this.mediator.Send(request);
 
 
@@ -75,5 +67,29 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers.Admin
 
             return View(request);
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            ViewBag.Active = "AppTask";
+            await this.mediator.Send(new AppTaskDeleteRequest(id));
+            return RedirectToAction("List");
+
+        }
+
+        public async Task<IActionResult> Update(int id)
+        {
+            var updated = await this.mediator.Send(new AppTaskGetByIdRequest(id));
+
+            var result = await this.mediator.Send(new PriorityListRequest());
+
+            ViewBag.Priorities = new List<SelectListItem>(result.Data.Select(x => new SelectListItem(x.Definition, x.Id.ToString(),updated.Data.PriorityId == x.Id)));
+
+
+
+
+            return View();
+        }
+
+
     }
 }

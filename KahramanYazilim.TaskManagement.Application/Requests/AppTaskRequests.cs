@@ -13,7 +13,11 @@ namespace KahramanYazilim.TaskManagement.Application.Requests
         public string? S { get; set; }
     }
 
-
+    public record AppTaskGetByIdRequest(int Id) : IRequest<Result<AppTaskListDto>>;
 
     public record AppTaskCreateRequest(string? Title, string? Description, int PriorityId) : IRequest<Result<AppTaskDto>>;
+
+    public record AppTaskDeleteRequest(int Id) : IRequest<Result<NoData>>;
+
+    public record AppTaskUpdateRequest(string? Title, string? Description, int PriorityId, int? AppUserId) : IRequest<Result<AppTaskDto>>;
 }

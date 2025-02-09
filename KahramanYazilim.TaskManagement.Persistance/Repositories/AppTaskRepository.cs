@@ -4,6 +4,7 @@ using KahramanYazilim.TaskManagement.Domain.Entities;
 using KahramanYazilim.TaskManagement.Persistance.Context;
 using KahramanYazilim.TaskManagement.Persistance.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace KahramanYazilim.TaskManagement.Persistance.Repositories
 {
@@ -24,7 +25,7 @@ namespace KahramanYazilim.TaskManagement.Persistance.Repositories
 
         public async Task<PagedData<AppTask>> GetAllAsync(int activePage, string? s = null, int pageSize = 10)
         {
-            var query = this.context.Tasks.AsQueryable();
+            var query = this.context.Tasks.Include(x=>x.AppUser).AsQueryable();
             if (!string.IsNullOrEmpty(s))
             {
                 query = query.Where(x => x.Title.ToLower().Contains(s.ToLower()));
@@ -33,5 +34,22 @@ namespace KahramanYazilim.TaskManagement.Persistance.Repositories
             var list = await query.Include(x => x.Priority).AsNoTracking().ToPagedAsync(activePage, pageSize);
             return list;
         }
+
+        public async Task DeleteAsync(AppTask deleted)
+        {
+            this.context.Tasks.Remove(deleted);
+            await this.context.SaveChangesAsync();
+        }
+
+        public async Task<AppTask?> GetByFilterAsync(Expression<Func<AppTask, bool>> filter)
+        {
+            return await this.context.Tasks.SingleOrDefaultAsync(filter);
+        }
+
+        public async Task<AppTask?> GetByFilterAsNoTrackingAsync(Expression<Func<AppTask, bool>> filter)
+        {
+            return await this.context.Tasks.AsNoTracking().SingleOrDefaultAsync(filter);
+        }
+
     }
 }

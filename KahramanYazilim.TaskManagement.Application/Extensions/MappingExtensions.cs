@@ -1,4 +1,5 @@
-﻿using KahramanYazilim.TaskManagement.Application.Enums;
+﻿using KahramanYazilim.TaskManagement.Application.Dtos;
+using KahramanYazilim.TaskManagement.Application.Enums;
 using KahramanYazilim.TaskManagement.Application.Requests;
 using KahramanYazilim.TaskManagement.Domain.Entities;
 
@@ -38,6 +39,12 @@ namespace KahramanYazilim.TaskManagement.Application.Extensions
                 State = false
             };
         }
+
+        public static AppTaskListDto ToMap(this AppTask appTask)
+        {
+            return new AppTaskListDto(appTask.Id, appTask.Title, appTask.Description, appTask.Priority.Definition, appTask.State, appTask.AppUserId, appTask.AppUserId.HasValue ? appTask.AppUser?.Name + " " + appTask.AppUser?.Surname : null, appTask.PriorityId);
+        }
+
     }
 
 }

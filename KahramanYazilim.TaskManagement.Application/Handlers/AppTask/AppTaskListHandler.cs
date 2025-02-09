@@ -23,7 +23,7 @@ namespace KahramanYazilim.TaskManagement.Application.Handlers
             foreach (var appTask in list.Data)
             {
 
-                var dto = new AppTaskListDto(appTask.Id, appTask.Title, appTask.Description, appTask.Priority?.Definition, appTask.State);
+                var dto = new AppTaskListDto(appTask.Id, appTask.Title, appTask.Description, appTask.Priority?.Definition, appTask.State, appTask.AppUserId, appTask.AppUserId.HasValue ? appTask.AppUser?.Name+" "+appTask.AppUser?.Surname:null, appTask.PriorityId);
                 result.Add(dto);
             }
 
