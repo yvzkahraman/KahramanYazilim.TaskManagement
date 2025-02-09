@@ -51,5 +51,10 @@ namespace KahramanYazilim.TaskManagement.Persistance.Repositories
             return await this.context.Tasks.AsNoTracking().SingleOrDefaultAsync(filter);
         }
 
+        public async Task<int> SaveChangesAsync()
+        {
+            return await this.context.SaveChangesAsync();
+        }
+
     }
 }

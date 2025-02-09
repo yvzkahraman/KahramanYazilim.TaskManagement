@@ -14,5 +14,7 @@ namespace KahramanYazilim.TaskManagement.Application.Interfaces
         Task DeleteAsync(AppTask deleted);
         Task<AppTask?> GetByFilterAsync(Expression<Func<AppTask, bool>> filter);
         Task<AppTask?> GetByFilterAsNoTrackingAsync(Expression<Func<AppTask, bool>> filter);
+
+        Task<int> SaveChangesAsync();
      }
 }

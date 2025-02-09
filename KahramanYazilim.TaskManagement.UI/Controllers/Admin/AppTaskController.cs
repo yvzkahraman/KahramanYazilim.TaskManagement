@@ -1,4 +1,5 @@
-﻿using KahramanYazilim.TaskManagement.Application.Requests;
+﻿using Azure.Core;
+using KahramanYazilim.TaskManagement.Application.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -103,6 +104,38 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers.Admin
             return View(new AppTaskUpdateRequest(updated.Data.Id, updated.Data.Title,updated.Data.Description,updated.Data.PriorityId,updated.Data.AppUserId));
         }
 
+
+        [HttpPost]
+        public async Task<IActionResult> Update(AppTaskUpdateRequest request)
+        {
+            var result = await this.mediator.Send(request);
+
+
+            ViewBag.Priorities = new List<SelectListItem>(result.Data.Priorities.Select(x => new SelectListItem(x.Definition, x.Id.ToString(), x.Id == request.PriorityId)));
+            ViewBag.Members = new List<SelectListItem>(result.Data.Employees.Select(x => new SelectListItem(x.Name + " "+x.Surname, x.Id.ToString(),x.Id == request.AppUserId)));
+
+
+            if (result.IsSuccess)
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                if (result.Errors?.Count > 0)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", result.ErrorMessage ?? "Sistemsel bir hata oluştu, üreticinize başvurun");
+                }
+            }
+
+            return View(request);
+        }
 
     }
 }
