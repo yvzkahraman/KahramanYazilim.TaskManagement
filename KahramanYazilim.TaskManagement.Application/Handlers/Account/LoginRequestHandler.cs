@@ -32,7 +32,7 @@ namespace KahramanYazilim.TaskManagement.Application.Handlers
                 {
                     var type = (RoleType)user.AppRoleId;
                     return new Result<LoginResponseDto?>(new LoginResponseDto(user.Name, user.Surname,
-                        type), true, null, null);
+                        type,user.Id), true, null, null);
                 }
                 else
                 {

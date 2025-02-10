@@ -99,6 +99,7 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers
 
             var claims = new List<Claim>
         {
+            new Claim("UserId",dto.Id+""),
             new Claim("Name", dto.Name),
             new Claim("Surname", dto.Surname),
             new Claim(ClaimTypes.Role, dto.Role.ToString()),

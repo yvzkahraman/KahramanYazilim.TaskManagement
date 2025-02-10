@@ -60,5 +60,16 @@ namespace KahramanYazilim.TaskManagement.Persistance.Repositories
             return list;
         }
 
+        public async Task<int> SaveChangesAsync()
+        {
+            return await this.context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(AppUser deleted)
+        {
+            this.context.Users.Remove(deleted);
+            await this.context.SaveChangesAsync();
+        }
+
     }
 }

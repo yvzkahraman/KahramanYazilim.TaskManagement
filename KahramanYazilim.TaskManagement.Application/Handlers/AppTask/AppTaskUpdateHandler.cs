@@ -20,12 +20,14 @@ namespace KahramanYazilim.TaskManagement.Application.Handlers.AppTask
         private readonly IAppTaskRepository repository;
         private readonly IPriorityRepository priorityRepository;
         private readonly IUserRepository userRepository;
+        private readonly INotificationRepository notificationRepository;
 
-        public AppTaskUpdateHandler(IAppTaskRepository repository, IPriorityRepository priorityRepository, IUserRepository userRepository)
+        public AppTaskUpdateHandler(IAppTaskRepository repository, IPriorityRepository priorityRepository, IUserRepository userRepository, INotificationRepository notificationRepository)
         {
             this.repository = repository;
             this.priorityRepository = priorityRepository;
             this.userRepository = userRepository;
+            this.notificationRepository = notificationRepository;
         }
 
         public async Task<Result<AppTaskDto>> Handle(AppTaskUpdateRequest request, CancellationToken cancellationToken)
@@ -57,7 +59,21 @@ namespace KahramanYazilim.TaskManagement.Application.Handlers.AppTask
                 }
                 else
                 {
+
+                    if(updated.AppUserId != request.AppUserId)
+                    {
+                        await this.notificationRepository.SendNotification(new Domain.Entities.Notification
+                        {
+                            AppUserId = request.AppUserId ?? 0,
+                            Description = $"{request.Title} adlı iş üzerinize atandı",
+                            State = false,
+                        });
+                    }
+
                     updated.AppUserId = request.AppUserId;
+                    // send notification
+
+               
                 }
 
                 updated.Title = request.Title;

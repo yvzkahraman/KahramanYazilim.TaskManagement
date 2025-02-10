@@ -23,5 +23,87 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers.Admin
             var result = await this.mediator.Send(new MemberListPagedRequest(activePage, s));
             return View(result);
         }
+
+        public async Task<IActionResult> ResetPassword(int id)
+        {
+            await this.mediator.Send(new MemberResetPasswordRequest(id));
+            return RedirectToAction("List");
+        }
+
+        public async Task<IActionResult> Update(int id)
+        {
+            var result = await this.mediator.Send(new MemberGetByIdRequest(id));
+            return View(new MemberUpdateRequest(result.Data.Id, result.Data.Name, result.Data.Surname));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(MemberUpdateRequest request)
+        {
+            var result = await this.mediator.Send(request);
+
+            if (result.IsSuccess)
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                if (result.Errors?.Count > 0)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", result.ErrorMessage ?? "Sistemsel bir hata oluştu, üreticinize başvurun");
+                }
+            }
+
+
+            return View(request);
+        }
+
+
+        public IActionResult Create()
+        {
+         
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(MemberCreateRequest request)
+        {
+            var result = await this.mediator.Send(request);
+
+            if (result.IsSuccess)
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                if (result.Errors?.Count > 0)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", result.ErrorMessage ?? "Sistemsel bir hata oluştu, üreticinize başvurun");
+                }
+            }
+
+
+            return View(request);
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            await this.mediator.Send(new MemberDeleteRequest(id));
+            return RedirectToAction("List");
+        }
+
     }
 }

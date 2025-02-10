@@ -20,6 +20,7 @@ namespace KahramanYazilim.TaskManagement.Persistance
             services.AddScoped<IPriorityRepository, PriorityRepository>();
             services.AddScoped<IAppTaskRepository, AppTaskRepository>();
             services.AddScoped<ITaskReportRepository, TaskReportRepository>();
+            services.AddScoped<INotificationRepository,NotificationRepository>();
         }
     }
 }
