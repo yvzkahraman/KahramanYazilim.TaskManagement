@@ -1,4 +1,5 @@
-﻿using KahramanYazilim.TaskManagement.Application.Requests;
+﻿using Azure.Core;
+using KahramanYazilim.TaskManagement.Application.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.ViewEngines;
 namespace KahramanYazilim.TaskManagement.UI.Controllers.Member
 {
     [Area("Member")]
-    [Authorize(Roles="Member")]
+    [Authorize(Roles = "Member")]
     public class AppTaskController : Controller
     {
         private readonly IMediator mediator;
@@ -19,10 +20,10 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers.Member
 
         public async Task<IActionResult> List(string? s, int activePage = 1)
         {
-            var userId = int.Parse( User.Claims.SingleOrDefault(x => x.Type == "UserId")?.Value ?? "0");
+            var userId = int.Parse(User.Claims.SingleOrDefault(x => x.Type == "UserId")?.Value ?? "0");
             ViewBag.s = s;
             ViewBag.Active = "AppTask";
-            var result = await this.mediator.Send(new AppTaskListByUserIdRequest(activePage, s,userId));
+            var result = await this.mediator.Send(new AppTaskListByUserIdRequest(activePage, s, userId));
             return View(result);
         }
 
@@ -39,13 +40,13 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers.Member
         public IActionResult CreateReport(int taskId)
         {
             ViewBag.Active = "AppTask";
-            return View(new TaskReportCreateRequest("","",taskId));
+            return View(new TaskReportCreateRequest("", "", taskId));
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateReport(TaskReportCreateRequest request)
         {
- 
+
             ViewBag.Active = "AppTask";
             var result = await this.mediator.Send(request);
             if (result.IsSuccess)
@@ -77,7 +78,7 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers.Member
             return View(new TaskReportUpdateRequest(result.Data.Id, result.Data.Detail, result.Data.Definition, result.Data.AppTaskId));
         }
 
-       [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> UpdateReport(TaskReportUpdateRequest request)
         {
             ViewBag.Active = "AppTask";
@@ -90,11 +91,24 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers.Member
             else
             {
                 ModelState.AddModelError("", result.ErrorMessage ?? "Bilinmeyen bir hata oluştu, sistem üreticinize başvurun");
-             
+
                 return View(request);
             }
 
         }
+
+        public async Task<IActionResult> DeleteReport(int id, int taskId)
+        {
+            await this.mediator.Send(new TaskReportDeleteRequest(id));
+            return RedirectToAction("ReportList", new { id = taskId });
+        }
+
+        public async Task<IActionResult> CompleteTask(int id)
+        {
+            await this.mediator.Send(new AppTaskCompleteRequest(id));
+            return RedirectToAction("List");
+        }
+
 
     }
 }

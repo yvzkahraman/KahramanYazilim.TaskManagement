@@ -15,4 +15,7 @@ namespace KahramanYazilim.TaskManagement.Application.Requests
     public record TaskReportCreateRequest(string? Detail, string? Definition, int TaskId) : IRequest<Result<NoData>>;
 
     public record TaskReportUpdateRequest(int Id, string? Detail, string? Definition, int TaskId) : IRequest<Result<NoData>>;
+
+    public record TaskReportDeleteRequest(int Id) : IRequest<Result<NoData>>;
+    
 }

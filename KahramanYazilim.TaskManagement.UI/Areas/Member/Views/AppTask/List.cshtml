@@ -67,7 +67,14 @@
                     <td>@(item.State ? "Tamamlandı" : "Tamamlanmadı")</td>
                  
                     <td>
-                        <a onclick="return confirm('tamamlamak istediğinizden emin misin ?')" asp-action="Update" asp-controller="AppTask" asp-area="Member" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Tamamla</a>
+                        @{
+                            if (item.State == false)
+                            {
+                                <a onclick="return confirm('tamamlamak istediğinizden emin misin ?')" asp-action="CompleteTask" asp-controller="AppTask" asp-area="Member" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Tamamla</a>
+                            }
+         
+                        }
+                       
 
                         <a asp-action="ReportList"  class="btn btn-sm btn-primary"  asp-controller="AppTask" asp-area="Member" asp-route-id="@item.Id">Raporları Görüntüle</a>
                        

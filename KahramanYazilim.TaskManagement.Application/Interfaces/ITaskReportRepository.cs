@@ -17,6 +17,8 @@ namespace KahramanYazilim.TaskManagement.Application.Interfaces
 
         Task<int> CreateAsync(TaskReport taskReport);
 
+        Task<int> DeleteAsync(TaskReport taskReport);
+
         Task<int> SaveChangesAsync();
     }
 }

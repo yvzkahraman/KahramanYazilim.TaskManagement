@@ -33,7 +33,7 @@
 
                     <td>
                         <a asp-action="UpdateReport" asp-controller="AppTask" asp-area="Member" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Düzenle</a>
-                        <a asp-action="DeleteReport" onclick="return confirm('silmek istediğiniz emin misin ?')" class="btn btn-sm btn-primary" asp-controller="AppTask" asp-area="Member" asp-route-id="@item.Id">Sil</a>
+                        <a asp-action="DeleteReport" onclick="return confirm('silmek istediğiniz emin misin ?')" class="btn btn-sm btn-primary" asp-controller="AppTask" asp-area="Member" asp-route-id="@item.Id" asp-route-taskId="@ViewBag.TaskId">Sil</a>
 
                     </td>
 

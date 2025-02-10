@@ -27,6 +27,12 @@ namespace KahramanYazilim.TaskManagement.Persistance.Repositories
 
         }
 
+        public async Task<int> DeleteAsync(TaskReport taskReport)
+        {
+            this.context.Remove(taskReport);
+            return await context.SaveChangesAsync();
+        }
+
         public async Task<List<TaskReport>?> GetAllByFilterAsync(Expression<Func<TaskReport, bool>> filter, bool asNoTracking = true)
         {
 
