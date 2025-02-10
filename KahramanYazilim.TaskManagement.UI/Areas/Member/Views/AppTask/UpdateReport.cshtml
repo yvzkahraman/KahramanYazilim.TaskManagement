@@ -1,0 +1,30 @@
+﻿@model TaskReportUpdateRequest
+@{
+    Layout = "_MemberLayout";
+    ViewBag.Title = "Rapor Düzenle";
+}
+
+
+<form asp-action="UpdateReport" asp-controller="AppTask" asp-area="Member" method="post">
+    <div class="mb-3">
+        <label class="form-label">Rapor Tanımı :</label>
+        <input asp-for="Definition" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Rapor Detayı :</label>
+        <input asp-for="Detail" class="form-control" />
+    </div>
+
+    <input asp-for="TaskId" type="hidden" class="form-control" />
+    <input asp-for="Id" type="hidden" class="form-control" />
+
+
+    <div class="mb-3">
+        <a asp-action="ReportList" asp-route-id="@Model.TaskId" asp-controller="AppTask" asp-area="Admin" class="btn btn-secondary">Vazgeç</a>
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </div>
+
+    <div asp-validation-summary="All" class="text-danger">
+    </div>
+</form>

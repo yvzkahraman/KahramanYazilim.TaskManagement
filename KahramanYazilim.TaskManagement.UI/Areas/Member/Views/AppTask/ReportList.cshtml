@@ -1,0 +1,56 @@
+﻿@model List<TaskReportListDto>
+@{
+    Layout = "_MemberLayout";
+    ViewBag.Title = "Rapor Tanımlama Ekranı";
+}
+
+
+<h5>@ViewBag.TaskTitle  Raporları</h5>
+<a asp-action="CreateReport" asp-controller="AppTask" asp-route-taskId="@ViewBag.TaskId" asp-area="Member">Yeni Rapor Yaz</a>
+
+<table class="table table-sm mt-2">
+    <thead>
+        <tr>
+
+            <th scope="col">Başlık</th>
+            <th scope="col">Açıklama</th>
+
+            <th scope="col"></th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Definition</td>
+                    <td>@item.Detail</td>
+                  
+
+                    <td>
+                        <a asp-action="UpdateReport" asp-controller="AppTask" asp-area="Member" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Düzenle</a>
+                        <a asp-action="DeleteReport" onclick="return confirm('silmek istediğiniz emin misin ?')" class="btn btn-sm btn-primary" asp-controller="AppTask" asp-area="Member" asp-route-id="@item.Id">Sil</a>
+
+                    </td>
+
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+
+                <td colspan="5">Herhangi bir rapor bulunamadı.</td>
+
+            </tr>
+        }
+
+
+
+
+    </tbody>
+</table>

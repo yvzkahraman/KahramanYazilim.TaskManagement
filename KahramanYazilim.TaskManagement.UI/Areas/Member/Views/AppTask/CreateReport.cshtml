@@ -1,0 +1,29 @@
+﻿@model TaskReportCreateRequest
+@{
+    Layout = "_MemberLayout";
+    ViewBag.Title = "Rapor Ekle";
+}
+
+
+<form asp-action="CreateReport" asp-controller="AppTask" asp-area="Member" method="post">
+    <div class="mb-3">
+        <label class="form-label">Rapor Tanımı :</label>
+        <input asp-for="Definition" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Rapor Detayı :</label>
+        <input asp-for="Detail" class="form-control" />
+    </div>
+
+    <input asp-for="TaskId" type="hidden" class="form-control" />
+
+
+    <div class="mb-3">
+        <a asp-action="List" asp-controller="Priority" asp-area="Admin" class="btn btn-secondary">Vazgeç</a>
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </div>
+
+    <div asp-validation-summary="All" class="text-danger">
+    </div>
+</form>

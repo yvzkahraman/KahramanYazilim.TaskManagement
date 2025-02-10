@@ -52,7 +52,7 @@ namespace KahramanYazilim.TaskManagement.Application.Extensions
 
         public static List<TaskReportListDto> ToMap(this List<TaskReport> list)
         {
-            return list.Select(x => new TaskReportListDto(x.Id,x.Definition,x.Detail,x.AppTaskId)).ToList();
+            return list.Select(x => new TaskReportListDto(x.Id,x.Definition,x.Detail,x.AppTaskId, x.AppTask.Title)).ToList();
         }
 
     }
