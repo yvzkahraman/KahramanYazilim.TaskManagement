@@ -1,0 +1,36 @@
+﻿@model UserDetailUpdateRequest
+@{
+    Layout = "_MemberLayout";
+    ViewBag.Title = "Profil Ekranı";
+}
+
+<form asp-action="UserDetail" asp-controller="User" asp-area="Member" method="post">
+
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label class="form-label">  Ad :</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+
+    <div class="mb-3">
+        <label class="form-label">  Soyad :</label>
+        <input asp-for="Surname" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">  Parola :</label>
+        <input asp-for="Password" class="form-control" />
+    </div>
+
+
+
+
+    <div class="mb-3">
+
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </div>
+
+    <div asp-validation-summary="All" class="text-danger">
+    </div>
+</form>

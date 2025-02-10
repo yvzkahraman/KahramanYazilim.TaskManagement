@@ -35,12 +35,12 @@
         <div class="border-end bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading border-bottom bg-light">Work Order App</div>
             <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action list-group-item-light p-3  @(ViewBag.Active=="Home"?"active":"")" asp-action="Index" asp-controller="Home" asp-area="Admin">Gösterge Paneli</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3 @(ViewBag.Active=="Priority"?"active":"")" asp-action="List" asp-controller="Priority">Aciliyet Durumları</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3 @(ViewBag.Active=="AppTask"?"active":"")" asp-action="List" asp-controller="AppTask" asp-area="Admin">İş Emirleri</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3 @(ViewBag.Active=="Members"?"active":"")" asp-action="List" asp-controller="User" asp-area="Admin">Kullanıcılar</a>
+
                 <a class="list-group-item list-group-item-action list-group-item-light p-3 @(ViewBag.Active=="Profil"?"active":"")" asp-action="UserDetail" asp-controller="User">Profil</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3 @(ViewBag.Active=="Notification"?"active":"")" asp-action="List" asp-controller="Notification" asp-area="Admin">Bildirimler</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3 @(ViewBag.Active=="AppTask"?"active":"")" asp-action="List" asp-controller="AppTask" asp-area="Member">İş Emirleri</a>
+    
+    
+                <a class="list-group-item list-group-item-action list-group-item-light p-3 @(ViewBag.Active=="Notification"?"active":"")" asp-action="List" asp-controller="Notification" asp-area="Member">Bildirimler</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3 " asp-action="LogOut" asp-controller="Account" asp-area="">Çıkış Yap</a>
             </div>
         </div>
@@ -50,7 +50,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <div class="container-fluid">
                     <button class="btn btn-secondary" id="sidebarToggle">Menü</button>
-                
+
                 </div>
             </nav>
             <!-- Page content-->

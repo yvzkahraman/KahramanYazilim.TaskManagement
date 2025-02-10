@@ -1,9 +1,42 @@
-﻿@{
+﻿@model DashboardDto
+
+@{
     Layout="_AdminLayout";
     ViewBag.Title = "Yavuz";
 }
 
 
-<p>
-    Admin Index works
-</p>
+<div class="row">
+    <div class="col-sm-4 mb-3 mb-sm-0">
+        <div class="card">
+            <div class="card-body">
+               
+                <h5 class="card-title">İş Emri Sayısı</h5>
+
+                <h1 class="card-title">@Model.TaskCount</h1>
+                <a asp-action="List" asp-controller="AppTask" asp-area="Admin" class="btn btn-primary">İş Emirlerine Git</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Kullanıcı Sayısı</h5>
+
+                <h1 class="card-title">@Model.UserCount</h1>
+                <a asp-action="List" asp-controller="User" asp-area="Admin" class="btn btn-primary">Kullanıcılara Git</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Okunmamış Bildirim Sayısı</h5>
+
+                <h1 class="card-title">@Model.NotificationCount</h1>
+                <a asp-action="List" asp-controller="Notification" asp-area="Admin" class="btn btn-primary">Bildirimlere Git</a>
+            </div>
+        </div>
+    </div>
+</div>

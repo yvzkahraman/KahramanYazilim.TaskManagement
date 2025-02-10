@@ -1,4 +1,5 @@
 ﻿using KahramanYazilim.TaskManagement.Application.Dtos;
+using KahramanYazilim.TaskManagement.Application.Enums;
 using KahramanYazilim.TaskManagement.Application.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
@@ -32,7 +33,10 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers
             {
                 await SetAuthCookie(result.Data, request.RememberMe);
 
-                return RedirectToAction("Index", "Home", new { area = "Admin" });
+                if (result.Data.Role == RoleType.Admin)
+                    return RedirectToAction("Index", "Home", new { area = "Admin" });
+                else
+                    return RedirectToAction("UserDetail", "User", new { area = "Member" });
             }
             else
             {
@@ -85,9 +89,10 @@ namespace KahramanYazilim.TaskManagement.UI.Controllers
 
         }
 
-        public IActionResult LogOut()
+        public async Task<IActionResult> LogOut()
         {
-            return View();
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login");
         }
 
 

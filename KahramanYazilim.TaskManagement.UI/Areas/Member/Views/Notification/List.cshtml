@@ -1,0 +1,18 @@
+﻿@model List<NotificationListDto>
+@{
+    Layout = "_MemberLayout";
+    ViewBag.Title = "Bildirim Ekranı";
+}
+
+
+@foreach (var item in Model)
+{
+    <div class="alert @(item.State == true ? " alert-light": " alert-primary")" role="alert">
+        @item.Description   @{
+            if (item.State == false)
+            {
+                <a asp-action="Update" asp-route-id="@item.Id" asp-controller="Notification">Okundu olarak işaretle</a>
+            }
+        }
+    </div>
+}

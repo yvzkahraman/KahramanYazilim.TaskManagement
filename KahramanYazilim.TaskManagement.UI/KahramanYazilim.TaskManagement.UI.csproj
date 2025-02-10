@@ -18,11 +18,4 @@
     <ProjectReference Include="..\KahramanYazilim.TaskManagement.Persistance\KahramanYazilim.TaskManagement.Persistance.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Member\" />
-    <Folder Include="Areas\Member\" />
-    <Folder Include="Controllers\Member\" />
-    <Folder Include="Controllers\Member\" />
-  </ItemGroup>
-
 </Project>
